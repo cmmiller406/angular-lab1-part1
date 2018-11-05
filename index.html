@@ -16,7 +16,6 @@
 
 <body>
     <section class="main-container" ng-controller="TodoController as $ctrl">
-       
         <h3>TODO List</h3>
         <p>A place to store the things you have to do!</p>
         <section class="input-container" >
@@ -34,9 +33,7 @@
             <input type="text" ng-model="$ctrl.task.name" placeholder="Add your to-do">
             <button ng-click="$ctrl.addTask($ctrl.task)" class="add-btn">Add</button>
         </section>
-
     </section>
-
     <script src="https://code.angularjs.org/1.6.5/angular.js"></script>
     <script src="module.js"></script>
     <script src="controller.js"></script>
