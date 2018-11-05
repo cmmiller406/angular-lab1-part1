@@ -16,23 +16,23 @@
 
 <body>
     <section class="main-container" ng-controller="TodoController as $ctrl">
-
+       
         <h3>TODO List</h3>
         <p>A place to store the things you have to do!</p>
-        <section class="input-container">
-            <input type="text" placeholder="Filter your to-dos">
+        <section class="input-container" >
+            <input ng-model="$ctrl.filterList" type="text" placeholder="Filter your to-dos">
         </section>
         <ol>
-            <section class="list-items" ng-repeat="task in $ctrl.tasks">
+            <section class="list-items" ng-repeat="task in $ctrl.tasks | filter: $ctrl.filterList track by $index">
                 <li 
                 ng-class="{'completed': task.completed === true}">
-                <button ng-if="task.completed === false" class="complete-btn">Complete</button> {{ task.name }}</li>
-                <i class="fas fa-times"></i>
+                <button ng-if="!task.completed" class="complete-btn" ng-click="$ctrl.completeTask(task)">Complete</button> {{ task.name }}</li>
+                <i ng-click="$ctrl.removeTask(task)"class="fas fa-times"></i>
             </section>
         </ol>
         <section class="add-container">
-            <input type="text" placeholder="Add your to-do">
-            <button class="add-btn">Add</button>
+            <input type="text" ng-model="$ctrl.task.name" placeholder="Add your to-do">
+            <button ng-click="$ctrl.addTask($ctrl.task)" class="add-btn">Add</button>
         </section>
 
     </section>
